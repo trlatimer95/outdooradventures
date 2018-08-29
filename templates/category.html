@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category.name }} | Items</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+<div class="header">
+    <a class="title" href="{{url_for('showCatalog')}}"><h1 class="title">Outdoor Adventures</h1></a>
+    {% if 'username' not in session %}
+        <a class="login" href="{{url_for('showLogin')}}">Login</a>
+    {% else %}
+        <a class="login" href="{{url_for('disconnect')}}">Logout</a>
+    {% endif %}
+</div><!-- header -->
+<div class="flash">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+				    <li> <strong> {{ message }} </strong> </li>
+				{% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}    
+</div><!-- End Flash -->
+<div class="container">
+    <aside class="sidebar">
+        <h2>Categories</h2>
+        <hr>
+        {% for c in categories %}
+        <a class="view" href="{{url_for('showCategory', category_id=c.id)}}"><h4>{{ c.name }}</h4></a>
+        <!-- <ul>
+            <li>
+                <a class="delete" href="{{url_for('deleteCategory', category_id=c.id)}}">Delete</a>
+            </li>
+        </ul> ONLY AVAILABLE FOR SETUP/EDITING -->
+        {% endfor %}
+    </aside><!-- Sidebar -->
+    <div class="content">
+        <h2>{{ category.name }} Items</h2>
+        <hr>
+        <a class="create" href="{{url_for('addItem', category_id=category.id)}}">
+            Create New Item
+        </a>
+        {% for i in items %}
+        <a href="{{url_for('viewItem', category=category, category_id=category.id, item=item, item_id=i.id)}}"><figure>
+            <figcaption>
+                <h3>{{i.name}}</h3>
+                <hr>
+            </figcaption>
+            <img src={{i.image}} alt="{{i.name}} Image">
+        </figure></a>
+        {% endfor %}
+        <br>
+        <a class="return" href="{{url_for('showCatalog')}}">Return</a>
+    </div><!-- Content -->
+</div><!-- Container -->
+<div class="footer">
+    <p>&copy; 2018 - Tyler Latimer</p>
+</div><!-- Footer -->
+</body>
+</html>

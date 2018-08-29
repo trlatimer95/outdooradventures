@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Outdoor Adventures</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="header">
+    <a class="title" href="{{url_for('showCatalog')}}"><h1 class="title">Outdoor Adventures</h1></a>
+    {% if 'username' not in session %}
+        <a class="login" href="{{url_for('showLogin')}}">Login</a>
+    {% else %}
+        <a class="login" href="{{url_for('disconnect')}}">Logout</a>
+    {% endif %}
+</div><!-- Header -->
+<div class="flash">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+				    <li> <strong> {{ message }} </strong> </li>
+				{% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}    
+</div><!-- Flash -->
+<div class="container">
+    <aside class="sidebar">
+        <h2>Categories</h2>
+        <hr>
+        <!--
+        <a class="new" href="{{url_for('addCategory')}}">Add Category</a>
+        <br> ONLY FOR TESTING PURPOSES -->
+        {% for c in categories %}
+        <a class="sidebarLink" href="{{url_for('showCategory', category_id=c.id)}}"><h3>{{c.name}}</h3></a>
+        <!-- <ul>
+            <li>
+                <a class="delete" href="{{url_for('deleteCategory', category_id=c.id)}}">Delete</a>
+            </li>
+        </ul> ONLY FOR TESTING PURPOSES -->
+        {% endfor %}
+    </aside><!-- Sidebar -->
+    <div class="content">
+        <h2>Latest Items</h2>
+        <hr>
+        {% for a in additions %}
+        <a href="{{url_for('viewItem', category=a.category, category_id=a.category_id, item=a, item_id=a.id)}}">
+        <figure>
+            <figcaption>
+                <p>{{a.name}}</p>
+                <hr>
+            </figcaption>
+            <img src={{a.image}} alt="{{a.name}} Image">
+        </figure>
+        </a>
+        {% endfor %}
+    </div><!-- Content -->
+</div><!-- Container -->
+<div class="footer">
+    <p>&copy; 2018 - Tyler Latimer</p>
+</div><!-- Footer -->
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category.name}} | {{item.name}}</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+<div class="header">
+    <a class="title" href="{{url_for('showCatalog')}}"><h1 class="title">Outdoor Adventures</h1></a>
+    {% if 'username' not in session %}
+        <a class="login" href="{{url_for('showLogin')}}">Login</a>
+    {% else %}
+        <a class="login" href="{{url_for('disconnect')}}">Logout</a>
+    {% endif %}
+</div><!-- Header -->
+<div class="flash">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+				    <li> <strong> {{ message }} </strong> </li>
+				{% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}    
+</div><!-- Flash -->
+<div class="container item">
+    <div class="content itemContent">
+        <h2>{{item.name}}</h2>
+        <hr>
+        <img class="image itemImage" src={{item.image}}>
+        <h3>Description:</h3>
+        <p class="description">{{ item.description }}</p>
+        <a class="back" href="{{url_for('showCategory', category_id=category.id)}}">Return</a>
+    </div><!-- Content -->
+</div><!-- Container -->
+</body>
+</html>

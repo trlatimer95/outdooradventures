@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category.name }} | Edit Item</title>
+    <link rel="stylesheet" type="text/css" href="/static/formStyles.css">
+</head>
+<body>
+<div class="header">
+    <a class="title" href="{{url_for('showCatalog')}}"><h1 class="title">Outdoor Adventures</h1></a>
+    {% if 'username' not in session %}
+        <a class="login" href="{{url_for('showLogin')}}">Login</a>
+    {% else %}
+        <a class="login" href="{{url_for('disconnect')}}">Logout</a>
+    {% endif %}
+</div><!-- Header -->
+<div class="container">
+    <h2>Edit {{item.name}}</h2>
+    <hr>
+    <form action="{{url_for('editItem', category_id=category_id, item_id=item.id)}}" method='POST'>
+        <p>Name:</p>
+        <input type='text' size='40' name='name' placeholder='{{item.name}}'>
+        <p>Description:</p>
+        <textarea name='description' placeholder='{{item.description}}'>{{item.description}}</textarea>
+        <p>Image:</p>
+        <input type='text' size='40' name='image' placeholder="'{{item.image}}">
+        <br>
+        <br>
+        <input class="submit" type='submit' value='Edit'>
+    </form>
+    <a class="return" href="{{url_for('viewItem', category_id=category_id, item_id=item.id)}}">Cancel</a>
+</div><!-- Container -->
+</body>
+</html>

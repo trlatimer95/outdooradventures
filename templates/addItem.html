@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{category.name}} | New Item</title>
+    <link rel="stylesheet" type="text/css" href="/static/formStyles.css">
+</head>
+<body>
+<div class="header">
+    <a class="title" href="{{url_for('showCatalog')}}"><h1 class="title">Outdoor Adventures</h1></a>
+    {% if 'username' not in session %}
+        <a class="login" href="{{url_for('showLogin')}}">Login</a>
+    {% else %}
+        <a class="login" href="{{url_for('disconnect')}}">Logout</a>
+    {% endif %}
+</div><!-- header -->
+<div class="container">
+    <h2>Add New Item to {{category.name}}</h2>
+    <hr>
+    <form action="{{url_for('addItem', category_id=category_id)}}" method='POST'>
+        <p>Name:</p>
+        <input type='text' size='30' name='name' placeholder='Item Name'>
+        <p>Image:</p>
+        <input type='text' size='30' name='image' placeholder='Paste Image Address Here'>
+        <p>Description:</p>
+        <textarea name='description'>Enter Item Description Here</textarea>
+        <br>
+        <br>
+        <input class="submit" type='submit' value='Create'>
+    </form>
+        
+    <a class="return" href="{{url_for('showCategory', category_id=category_id)}}">Cancel</a>
+</div>
+<div class="footer">
+    <p>&copy; 2018 - Tyler Latimer</p>
+</div><!-- Footer -->
+</body>
+</html>

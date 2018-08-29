@@ -1,0 +1,192 @@
+/* CSS File for Catalog Project */
+
+/* ==============
+   General Styles
+=================*/
+body {
+    background-color: #DDDDDD;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: darkblue;
+    width: 100%;
+    color: white;
+}
+
+.title {
+    display: inline-block;
+    width: 85%;
+    margin-left: 20px;
+    color: white;
+}
+
+.login {
+    display: inline-block;
+    margin-right: 10px;
+    width: 120px;
+    font-weight: bold;
+    color: white;
+}
+
+.flash {
+	background-color: #98FB98;
+	width:100%;
+	text-decoration: none;
+    margin: 0;
+}
+
+.flash li {
+	list-style-type: none;
+	text-align: center;
+}
+
+.container {
+    width: 90%;
+    background: white;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    border: solid black 1px;
+    box-shadow: #777 5px 5px;
+}
+
+aside {
+    display: inline-block;
+    width: 15%;
+    height: 100%;
+    vertical-align: top;
+    margin-right: 0;
+    padding-left: 10px;
+    border-right: solid black 1px;
+}
+
+.content {
+    display: inline-block;
+    width: 75%;
+    padding-left: 5px;
+    margin-left: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: firebrick;
+}
+
+figure {
+    border: solid black 1px;
+    width: 25%;
+    height: 270px;
+    margin: 2% 3%;
+    display: inline-block;
+    padding: 0 5px 5px 5px;
+    box-shadow: #777 5px 5px;
+}
+
+figure img {
+    width: 90%;
+    height: 180px;
+    margin: 0 auto;
+}
+
+figure figcaption {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+.footer {
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.create {
+    display: block;
+    width: 120px;
+    border: solid 1px black;
+    box-shadow: #777 3px 3px;
+    background-color: limegreen;
+    padding: 3px 5px;
+    margin-left: 3%;
+    font-weight: bold;
+}
+
+.return {
+    display: block;
+    width: 50px;
+    border: solid 1px black;
+    box-shadow: #777 3px 3px;
+    background: yellow;
+    padding: 3px 5px;
+    margin-left: 3%;
+    font-weight: bold;
+}
+
+/*=========
+Item Styles
+===========*/
+
+.item {
+    padding: 0 auto;
+    width: 80%;
+}
+
+.itemContent {
+    width: 85%;
+    margin: 10px 5%;
+}
+
+.back {
+    display: block;
+    width: 50px;
+    border: solid 1px black;
+    box-shadow: #777 3px 3px;
+    background: yellow;
+    padding-left: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.image {
+    margin: 5px;
+    max-height: 400px;
+    max-width: 400px;
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+.edit {
+    width: 50px;
+    border: solid 1px black;
+    box-shadow: #777 3px 3px;
+    background-color: orange;
+    padding: 3px 5px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.delete {
+    width: 50px;
+    border: solid 1px black;
+    box-shadow: #777 3px 3px;
+    background-color: red;
+    padding: 3px 5px;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-weight: bold;
+}
